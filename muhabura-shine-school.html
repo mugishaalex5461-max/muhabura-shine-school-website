@@ -29,9 +29,9 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background:
-      linear-gradient(rgba(10, 30, 16, 0.88), rgba(10, 30, 16, 0.82)),
+      linear-gradient(rgba(10, 30, 16, 0.74), rgba(10, 30, 16, 0.68)),
       url("images/Background.jpeg") center/cover no-repeat;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(2px);
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 5%;
@@ -59,7 +59,9 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    background: linear-gradient(160deg, #0a3018 0%, #1a5c2e 50%, #2d7a44 100%);
+    background:
+      linear-gradient(rgba(10, 48, 24, 0.50), rgba(10, 48, 24, 0.50)),
+      url("images/Background.jpeg") center/cover no-repeat;
     display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 100px 5% 60px;
     position: relative; overflow: hidden;
@@ -331,7 +333,7 @@
   /* FOOTER */
   footer {
     background:
-      linear-gradient(rgba(10, 30, 16, 0.92), rgba(10, 30, 16, 0.94)),
+      linear-gradient(rgba(10, 30, 16, 0.78), rgba(10, 30, 16, 0.82)),
       url("images/Background.jpeg") center/cover no-repeat;
     color: rgba(255,255,255,0.7); padding: 60px 5% 30px;
   }
@@ -382,8 +384,6 @@
 <!-- HERO -->
 <section class="hero">
   <div style="position:relative;z-index:1;">
-    <div class="hero-eyebrow">Kisoro District, South-Western Uganda</div>
-    <h1>Shining Bright at the <span>Foot of Muhabura</span></h1>
     <p class="hero-sub">Muhabura Shine Secondary School nurtures future leaders through academic excellence, strong values, and holistic education in the heart of Kisoro.</p>
     <div class="hero-btns">
       <a class="btn-primary" href="#admissions">Apply for Admissions</a>
@@ -396,17 +396,6 @@
     </svg>
   </div>
 </section>
-
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stats-grid">
-    <div><div class="stat-num">10+</div><div class="stat-label">Years of Excellence</div></div>
-    <div><div class="stat-num">100%</div><div class="stat-label">UCE Pass Rate</div></div>
-    <div><div class="stat-num">800+</div><div class="stat-label">Students Enrolled</div></div>
-    <div><div class="stat-num">50+</div><div class="stat-label">Qualified Teachers</div></div>
-    <div><div class="stat-num">20+</div><div class="stat-label">Clubs & Activities</div></div>
-  </div>
-</div>
 
 <!-- ABOUT -->
 <section class="about" id="about">
