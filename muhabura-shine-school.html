@@ -56,6 +56,38 @@
   }
   .nav-cta:hover { opacity: .92; }
 
+  /* SCHOOL NAME MARQUEE */
+  .school-marquee {
+    margin-top: 68px;
+    background: linear-gradient(90deg, #0f3d20, #1a5c2e, #267a3e);
+    border-top: 1px solid rgba(255,255,255,0.18);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: schoolNameMarquee 20s linear infinite;
+  }
+  .marquee-group {
+    display: flex;
+    flex-shrink: 0;
+  }
+  .marquee-text {
+    color: #ffffff;
+    font-size: clamp(28px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 10px 36px;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.35);
+  }
+  @keyframes schoolNameMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
   /* HERO */
   .hero {
     min-height: 100vh;
@@ -380,6 +412,21 @@
     <a class="nav-cta" href="#admissions">Apply Now</a>
   </div>
 </nav>
+
+<section class="school-marquee" aria-label="School Name Marquee">
+  <div class="marquee-track">
+    <div class="marquee-group">
+      <span class="marquee-text">MUHABURA SHINE S.S</span>
+      <span class="marquee-text">MUHABURA SHINE S.S</span>
+      <span class="marquee-text">MUHABURA SHINE S.S</span>
+    </div>
+    <div class="marquee-group" aria-hidden="true">
+      <span class="marquee-text">MUHABURA SHINE S.S</span>
+      <span class="marquee-text">MUHABURA SHINE S.S</span>
+      <span class="marquee-text">MUHABURA SHINE S.S</span>
+    </div>
+  </div>
+</section>
 
 <!-- HERO -->
 <section class="hero">
