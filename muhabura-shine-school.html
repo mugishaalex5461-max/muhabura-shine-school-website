@@ -849,16 +849,17 @@
           <div class="form-group">
             <label>Send To</label>
             <select id="enquiryRecipient">
-              <option value="256782314732">Director</option>
-              <option value="256775972441">Headmaster (HM)</option>
-              <option value="256701670319">Deputy Headmaster (D/HM)</option>
-              <option value="256783183211">Director of Studies (DOS)</option>
+              <option value="director">Director</option>
+              <option value="hm">Headmaster (HM)</option>
+              <option value="dhm">Deputy Headmaster (D/HM)</option>
+              <option value="dos">Director of Studies (DOS)</option>
             </select>
           </div>
           <div class="form-group">
             <label>Send Via</label>
             <select id="enquiryChannel">
               <option value="whatsapp">WhatsApp</option>
+              <option value="email">Email</option>
               <option value="facebook">Facebook</option>
               <option value="sms">SMS</option>
             </select>
@@ -940,9 +941,18 @@
     const lastName = document.getElementById('enquiryLastName').value.trim();
     const phone = document.getElementById('enquiryPhone').value.trim();
     const enquiryType = document.getElementById('enquiryType').value;
-    const recipient = document.getElementById('enquiryRecipient').value;
+    const recipientRole = document.getElementById('enquiryRecipient').value;
     const channel = document.getElementById('enquiryChannel').value;
     const message = document.getElementById('enquiryMessage').value.trim();
+
+    const recipientMap = {
+      director: { label: 'Director', phone: '256782314732', email: 'info@muhaburashine.sc.ug' },
+      hm: { label: 'Headmaster (HM)', phone: '256775972441', email: 'info@muhaburashine.sc.ug' },
+      dhm: { label: 'Deputy Headmaster (D/HM)', phone: '256701670319', email: 'info@muhaburashine.sc.ug' },
+      dos: { label: 'Director of Studies (DOS)', phone: '256783183211', email: 'info@muhaburashine.sc.ug' }
+    };
+
+    const recipient = recipientMap[recipientRole] || recipientMap.director;
 
     if (!firstName || !message) {
       alert('Please fill in at least First Name and Message before sending.');
@@ -952,18 +962,25 @@
     const fullName = [firstName, lastName].filter(Boolean).join(' ');
     const composedMessage =
       'Hello Muhabura Shine School,%0A%0A' +
+      'To: ' + encodeURIComponent(recipient.label) + '%0A' +
       'Name: ' + encodeURIComponent(fullName) + '%0A' +
       'Phone: ' + encodeURIComponent(phone || 'Not provided') + '%0A' +
       'Enquiry Type: ' + encodeURIComponent(enquiryType) + '%0A%0A' +
       'Message: ' + encodeURIComponent(message);
 
     if (channel === 'whatsapp') {
-      window.open('https://wa.me/' + recipient + '?text=' + composedMessage, '_blank');
+      window.open('https://wa.me/' + recipient.phone + '?text=' + composedMessage, '_blank');
+      return;
+    }
+
+    if (channel === 'email') {
+      const subject = encodeURIComponent('Enquiry for ' + recipient.label + ' - ' + enquiryType);
+      window.location.href = 'mailto:' + recipient.email + '?subject=' + subject + '&body=' + composedMessage;
       return;
     }
 
     if (channel === 'sms') {
-      window.location.href = 'sms:+' + recipient + '?body=' + composedMessage;
+      window.location.href = 'sms:+' + recipient.phone + '?body=' + composedMessage;
       return;
     }
 
